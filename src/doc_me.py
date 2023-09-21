@@ -5,32 +5,34 @@
 # GitHub   : https://github.com/SongshGeo
 # Website: https://cv.songshgeo.com/
 
-import .bad
-import os
+import math
+from numbers import Number
+
+# NOT used, but it will trigger a `bandit` save issue
+TOKEN = "1234567890"
+
+# a constant should be here
+PI = 3.141592653589793
+
+# Constants should not be here
+x = 5
+y = 10
 
 
-
-a_bad_name = 1
-Another_bad_name = 'terrible'
-
-
-class fix_and_DocMe:
-    """
-    DocMe in google style.
-    """
-    def __init__(self) -> None:
-        pass
-
-    def a_method(self, param1, param2):
-        """
-        """
-        pass
+def area_of_circle(radius):
+    return PI * math.pow(radius, 2)
 
 
-def add_document():
-        """The doc format of this function is bad..."""
-        print("Hello, I can work, but the format is terrible.")
+class Rectangle:
+    def __init__(self, width: Number, height: Number) -> None:
+        self.width = width
+        self.height = height
+
+    def area(self) -> str:
+        return self.width * self.height
 
 
 if __name__ == "__main__":
-    add_document()
+    print(f"Area of circle with radius {x} is {area_of_circle(x)}")
+    rect = Rectangle(x, y)
+    print(f"Area of rectangle with width {x} and height {y} is {rect.area()}")
