@@ -46,6 +46,6 @@ install-docs:
 test:
 	poetry run pytest -vs --clean-alluredir --alluredir tmp/allure_results --cov=src  --no-cov-on-fail
 
-test-report:
+report:
 	poetry run allure serve tmp/allure_results
 

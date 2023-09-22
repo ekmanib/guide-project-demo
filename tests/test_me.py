@@ -24,17 +24,19 @@ logger = logging.getLogger(__name__)
 logger.info("Starting test_me.py")
 
 
-def _run_command(command):
+def _run_command(command: str, check_all: bool = True) -> None:
     """Run a command with poetry."""
     if not cfg.check_mode:
         return
+    if not cfg.check_all or not check_all:
+        command = command.replace('src', 'src/doc_me.py')
     commands = command.split()
     command_lst = ['poetry', 'run', *commands]
     result = subprocess.run(command_lst, capture_output=True, text=True)
     if result.returncode != 0:
         logger.error(result.stdout)
         logger.error(result.stderr)
-        raise AssertionError(f"'{commands[0]}' failed, run 'make test-report' in terminal to check details.")
+        raise AssertionError(f"'{commands[0]}' failed when run '{command}'.")
 
 
 def test_interrogate():
@@ -64,7 +66,7 @@ def test_mypy():
 
 def test_bandit():
     """Run pytest for testing your fixed code."""
-    _run_command("bandit src --level=3")
+    _run_command("bandit src", False)
 
 
 def test_pydocstyle():

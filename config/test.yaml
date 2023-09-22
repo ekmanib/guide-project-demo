@@ -2,6 +2,8 @@
 
 check_mode: True
 
+check_all: True
+
 checks:
   interrogate: True
   black: True
