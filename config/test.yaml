@@ -11,14 +11,3 @@ checks:
   bandit: True
   pydocstyle: True
   pytest: True
-
-tests:
-  interrogate: "interrogate"
-  sourcery: "sourcery review src"
-  black: "black src --check"
-  flake8: "flake8 src"
-  isort: "isort src --check"
-  mypy: "mypy src"
-  bandit: "bandit src --count"
-  pydocstyle: "pydocstyle src --convention=google"
-  pytest: 'pytest --cov=src --cov-fail-under=95% --no-cov-on-fail'

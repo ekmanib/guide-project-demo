@@ -24,22 +24,59 @@ logger = logging.getLogger(__name__)
 logger.info("Starting test_me.py")
 
 
-def run_command(command):
+def _run_command(command):
     """Run a command with poetry."""
-    command_lst = ['poetry', 'run', *command.split()]
-    return subprocess.run(command_lst, capture_output=True, text=True)
-
-
-def test_commands():
-    """Run pytest for testing your fixed code."""
     if not cfg.check_mode:
         return
-    for name, command in cfg.tests.items():
-        if not cfg.checks.get(name):
-            continue
-        result = run_command(command=command)
-        code = result.returncode
-        if code != 0:
-            logger.error(result.stdout)
-            logger.error(result.stderr)
-            raise AssertionError(f"'{name}' failed, run 'poetry run {command}' in your terminal or check the log (run 'make test-report' in terminal) to check details.")
+    commands = command.split()
+    command_lst = ['poetry', 'run', *commands]
+    result = subprocess.run(command_lst, capture_output=True, text=True)
+    if result.returncode != 0:
+        logger.error(result.stdout)
+        logger.error(result.stderr)
+        raise AssertionError(f"'{commands[0]}' failed, run 'make test-report' in terminal to check details.")
+
+
+def test_interrogate():
+    """Run pytest for testing your fixed code."""
+    _run_command("interrogate")
+
+
+def test_black():
+    """Run pytest for testing your fixed code."""
+    _run_command("black src --check")
+
+
+def test_flake8():
+    """Run pytest for testing your fixed code."""
+    _run_command("flake8 src")
+
+
+def test_isort():
+    """Run pytest for testing your fixed code."""
+    _run_command("isort src --check")
+
+
+def test_mypy():
+    """Run pytest for testing your fixed code."""
+    _run_command("mypy src")
+
+
+def test_bandit():
+    """Run pytest for testing your fixed code."""
+    _run_command("bandit src --level=3")
+
+
+def test_pydocstyle():
+    """Run pytest for testing your fixed code."""
+    _run_command("pydocstyle src --convention=google")
+
+
+def test_pylint():
+    """Run pytest for testing your fixed code."""
+    _run_command("pylint src --fail-under=9")
+
+
+def test_pytest():
+    """Run pytest for testing your fixed code."""
+    _run_command("pytest --cov=src --cov-fail-under=95% --no-cov-on-fail")

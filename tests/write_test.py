@@ -8,9 +8,3 @@
 """
 You'd better write some tests for the code you write
 """
-
-
-def test_calculation():
-    """
-    Test the functions, classes.
-    """
