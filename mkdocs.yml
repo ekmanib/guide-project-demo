@@ -3,8 +3,6 @@ site_name: Guide demo
 nav:
   - Home: index.md
   - Quick Start: quick_start.md
-  - User Guide: user_guide.md
-  - Developer Guide: developer_guide.md
   - API References: api/index.md
 
 plugins:
@@ -30,6 +28,27 @@ plugins:
 theme:
     name: "material"
     logo: "https://assets.stickpng.com/images/5848152fcef1014c0b5e4967.png"
+    palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    language: en
+    features:
+        - header.autohide
+        - navigation.tabs
+        - navigation.tracking
+        - toc.follow
+        - content.tooltips  # only sponsor
 
 markdown_extensions:
   - abbr

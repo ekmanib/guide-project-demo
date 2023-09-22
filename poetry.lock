@@ -1771,14 +1771,13 @@ files = [
 
 [[package]]
 name = "mkdocs-jupyter"
-version = "0.24.2"
+version = "0.24.3"
 description = "Use Jupyter in mkdocs websites"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "mkdocs_jupyter-0.24.2-py3-none-any.whl", hash = "sha256:5295a34b1d0bd0a7688a857323eaf0319d83c8a14179b2651709b8ced6eae7db"},
-    {file = "mkdocs_jupyter-0.24.2.tar.gz", hash = "sha256:5e0c109d535d48797230719b6941f4d08de95a7a3c95bf158662c412fc15cb2e"},
+    {file = "mkdocs_jupyter-0.24.3-py3-none-any.whl", hash = "sha256:904262a8678a5e5920b7c3c03b5010b36301a69d0a38f2fcbf430493adf6879e"},
 ]
 
 [package.dependencies]
