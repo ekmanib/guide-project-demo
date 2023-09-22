@@ -27,7 +27,7 @@ plugins:
 
 theme:
     name: "material"
-    logo: "https://assets.stickpng.com/images/5848152fcef1014c0b5e4967.png"
+    logo: "https://songshgeo-picgo-1302043007.cos.ap-beijing.myqcloud.com/uPic/logo.png"
     palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"

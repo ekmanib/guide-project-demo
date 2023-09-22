@@ -23,4 +23,6 @@ It will redirect you to a web page with a [allure-pytest report](https://docs.qa
 
 ![Check where is wrong in the log](https://songshgeo-picgo-1302043007.cos.ap-beijing.myqcloud.com/uPic/CleanShot%202023-09-21%20at%2021.00.17@2x.png)
 
+Based on the report, keep improving your code formats until all tests are passed.
+
 There are even more tests, please check the document for the [full get-start guide](https://songshgeo.github.io/guide-project-demo).
