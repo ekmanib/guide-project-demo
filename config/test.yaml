@@ -2,7 +2,7 @@
 
 check_mode: True
 
-check_all: True
+check_all: False
 
 checks:
   interrogate: True

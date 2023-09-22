@@ -28,7 +28,7 @@ class Rectangle:
         self.width = width
         self.height = height
 
-    def area(self) -> str:
+    def area(self) -> Number:
         return self.width * self.height
 
 

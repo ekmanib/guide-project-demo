@@ -14,10 +14,10 @@ def factorial(n):
 
 # Class to represent a point in 2D space
 class Point:
- def __init__(self,x,y):
+ def __init__(self,x: int,y: int):
   self.x=x
   self.y=y
- def distance_from_origin(self):
+ def distance_from_origin(self) -> str:
   return math.sqrt(self.x**2+self.y**2)
 
 # Using global constant in function

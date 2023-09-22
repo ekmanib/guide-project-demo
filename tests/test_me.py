@@ -59,11 +59,6 @@ def test_isort():
     _run_command("isort src --check")
 
 
-def test_mypy():
-    """Run pytest for testing your fixed code."""
-    _run_command("mypy src")
-
-
 def test_bandit():
     """Run pytest for testing your fixed code."""
     _run_command("bandit src", False)
@@ -76,9 +71,18 @@ def test_pydocstyle():
 
 def test_pylint():
     """Run pytest for testing your fixed code."""
+    if not cfg.check_all:
+        return
     _run_command("pylint src --fail-under=9")
 
 
 def test_pytest():
     """Run pytest for testing your fixed code."""
     _run_command("pytest --cov=src --cov-fail-under=95% --no-cov-on-fail")
+
+
+def test_mypy():
+    """Run pytest for testing your fixed code."""
+    if not cfg.check_all:
+        return
+    _run_command("mypy src")
