@@ -14,6 +14,6 @@ Collaboration requires a clean codebase. After learning the tools and styles in 
 
 ## How to start
 
-1. 🙌 From [User Guide](user_guide.md), you can learn how to use this demo repo.
+1. 🙌 From [Quick Start](quick_start.md), you can learn how to use this demo repo.
 2. 🧭 From [Developer Guide](developer_guide.md), you can learn a lot of developing tools which can save your time -and life.
 3. 🧑‍💻 Finally, check [API document](api/index.md), make sure you are satisfied with the fixed repo.
