@@ -5,23 +5,41 @@
 # GitHub   : https://github.com/SongshGeo
 # Website: https://cv.songshgeo.com/
 
-from src.doc_me import add_document
-
+import logging
+from pprint import pprint
 import subprocess
+from hydra import compose, initialize
 
-COMMANDS = {
-    'interrogate': ["interrogate"],
-    'sourcery': ["sourcery", "review", "src"],
-    ''
-}
+# testing configurations
+with initialize(version_base=None, config_path="../config"):
+    cfg = compose(config_name="test")
 
-def test_after_fixing_problems():
-    assert add_document()
+FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+# logging
+logging.basicConfig(
+    format=FORMAT,
+    level=logging.DEBUG
+)
+logger = logging.getLogger(__name__)
+logger.info("Starting test_me.py")
 
 
-def test_cli_command():
-    # cli = "sourcery review src"
-    cli = "interrogate"
-    result = subprocess.run([cli], capture_output=True, text=True)
-    failure_message = f"CLI command failed with error code {result.returncode} and error message: {result.stderr}"
-    assert result.returncode == 0, failure_message
+def run_command(command):
+    """Run a command with poetry."""
+    command_lst = ['poetry', 'run', *command.split()]
+    return subprocess.run(command_lst, capture_output=True, text=True)
+
+
+def test_commands():
+    """Run pytest for testing your fixed code."""
+    if not cfg.check_mode:
+        return
+    for name, command in cfg.tests.items():
+        if not cfg.checks.get(name):
+            continue
+        result = run_command(command=command)
+        code = result.returncode
+        if code != 0:
+            logger.error(result.stdout)
+            logger.error(result.stderr)
+            raise AssertionError(f"'{name}' failed, run 'poetry run {command}' in your terminal or check the log (run 'make test-report' in terminal) to check details.")

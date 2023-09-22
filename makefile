@@ -3,7 +3,6 @@ setup:
 	make install-jupyter
 	make setup-pre-commit
 
-# 安装必要的代码检查工具
 # black: https://github.com/psf/black
 # flake8: https://github.com/pycqa/flake8
 # isort: https://github.com/PyCQA/isort
@@ -13,8 +12,10 @@ setup:
 # interrogate: https://interrogate.readthedocs.io/en/latest/index.html?highlight=pre-commit
 
 setup-pre-commit:
-	poetry add --group dev flake8 isort nbstripout pydocstyle pre-commit-hooks interrogate sourcery
-	# poetry run pre-commit install
+	poetry add --group dev flake8 isort nbstripout pydocstyle pre-commit-hooks interrogate sourcery mypy bandit black
+
+install-pre-commit:
+	poetry run pre-commit install
 
 install-jupyter:
 	poetry add ipykernel --group dev
@@ -22,7 +23,9 @@ install-jupyter:
 	poetry add jupyterlab_execute_time --group dev
 
 install-tests:
+	poetry add hydra-core
 	poetry add pytest allure-pytest --group dev
+	poetry add pytest-cov --group dev
 	poetry add pytest-clarity pytest-sugar --group dev
 
 # https://timvink.github.io/mkdocs-git-authors-plugin/index.html
@@ -41,8 +44,8 @@ install-docs:
 	poetry add --group docs mkdocs-glightbox
 
 test:
-	poetry run pytest -vs --clean-alluredir --alluredir tmp/allure_results
+	poetry run pytest -vs --clean-alluredir --alluredir tmp/allure_results --cov=src  --no-cov-on-fail
 
-report:
+test-report:
 	poetry run allure serve tmp/allure_results
 
