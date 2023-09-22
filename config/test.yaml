@@ -1,0 +1,15 @@
+# When check mode is switched on, run pytest for testing your fixed code. 
+
+check_mode: True
+
+check_all: False
+
+checks:
+  interrogate: True
+  black: True
+  flake8: True
+  isort: True
+  mypy: True
+  bandit: True
+  pydocstyle: True
+  pytest: True
