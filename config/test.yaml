@@ -1,8 +1,8 @@
-# When check mode is switched on, run pytest for testing your fixed code. 
+# When check mode is switched on, run pytest for testing your fixed code.
 
 check_mode: True
 
-check_all: False
+check_all: True
 
 checks:
   interrogate: True

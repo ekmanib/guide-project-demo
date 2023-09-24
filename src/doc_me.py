@@ -4,35 +4,74 @@
 # @Contact   : SongshGeo@gmail.com
 # GitHub   : https://github.com/SongshGeo
 # Website: https://cv.songshgeo.com/
+"""Constants and functions for calculating areas of shapes."""
 
 import math
-from numbers import Number
+from typing import Union
 
 # NOT used, but it will trigger a `bandit` save issue
-TOKEN = "1234567890"
+
 
 # a constant should be here
 PI = 3.141592653589793
 
-# Constants should not be here
-x = 5
-y = 10
-
 
 def area_of_circle(radius):
+    """Return the area of a circle with the given radius.
+
+    Parameters
+    ----------
+    radius: float
+        Radius of circle.
+    """
     return PI * math.pow(radius, 2)
 
 
 class Rectangle:
-    def __init__(self, width: Number, height: Number) -> None:
+    """Class Rectangle holds information and methods for a rectangle."""
+
+    def __init__(
+        self, width: Union[int, float], height: Union[int, float]
+    ) -> None:
+        """Initialize a rectangle object.
+
+        Parameters:
+        -----------
+        width : float
+            width of rectangle.
+        height : float
+            height of rectangle.
+
+        """
         self.width = width
         self.height = height
 
-    def area(self) -> Number:
+    def area(self) -> float:
+        """Return the area of the rectangle.
+
+        Parameters:
+        -----------
+        None
+        """
         return self.width * self.height
+
+    def get_height(self):
+        """Return the height of the rectangle."""
+        return self.height
+
+    def get_width(self):
+        """Return the width of the rectangle."""
+        return self.width
 
 
 if __name__ == "__main__":
-    print(f"Area of circle with radius {x} is {area_of_circle(x)}")
-    rect = Rectangle(x, y)
-    print(f"Area of rectangle with width {x} and height {y} is {rect.area()}")
+    # Define constants
+    X = 5
+    Y = 10
+
+    # Print the area of a circle
+    print(f"Area of circle with radius {X} is {area_of_circle(X)}")
+
+    # Initialize a rectangle object and print its area
+    rect = Rectangle(X, Y)
+    print(f"Area of rectangle with width {X} and height {Y} is {rect.area()}")
